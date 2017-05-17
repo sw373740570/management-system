@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vcredit.dataDictionary.dao.DataDictionaryDao">
+	<resultMap id="DataDictionaryMap" type="com.vcredit.dataDictionary.entity.DataDictionary">
+		
+		<id column="id" property="id"/>
+		<result column="code_type" property="codeType"/>
+		<result column="code_key" property="codeKey"/>
+		<result column="code_value" property="codeValue"/>
+		<result column="code_describe" property="codeDescribe"/>
+		<result column="is_enable" property="isEnable"/>
+		<result column="update_time" property="updateTime"/>
+	</resultMap>
+
+	<!--保存 -->
+	<insert id="saveDataDictionary" parameterType="com.vcredit.dataDictionary.entity.DataDictionary" 	useGeneratedKeys="true" 
+		keyProperty="id"
+														 >
+		insert into sys_data_dictionary 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="codeType != null">
+				code_type,
+			</if>
+			<if test="codeKey != null">
+				code_key,
+			</if>
+			<if test="codeValue != null">
+				code_value,
+			</if>
+			<if test="codeDescribe != null">
+				code_describe,
+			</if>
+			<if test="isEnable != null">
+				is_enable,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="codeType != null">
+				#{codeType},
+			</if>
+			<if test="codeKey != null">
+				#{codeKey},
+			</if>
+			<if test="codeValue != null">
+				#{codeValue},
+			</if>
+			<if test="codeDescribe != null">
+				#{codeDescribe},
+			</if>
+			<if test="isEnable != null">
+				#{isEnable},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime},
+			</if>
+		</trim>
+	</insert>
+	
+	<!--修改-->
+	<update id="updateDataDictionaryById" parameterType="com.vcredit.dataDictionary.entity.DataDictionary">
+		update sys_data_dictionary 
+		<set>
+			<if test="id != null">
+				id=#{id},
+			</if>
+			<if test="codeType != null">
+				code_type=#{codeType},
+			</if>
+			<if test="codeKey != null">
+				code_key=#{codeKey},
+			</if>
+			<if test="codeValue != null">
+				code_value=#{codeValue},
+			</if>
+			<if test="codeDescribe != null">
+				code_describe=#{codeDescribe},
+			</if>
+			<if test="isEnable != null">
+				is_enable=#{isEnable},
+			</if>
+			<if test="updateTime != null">
+				update_time=#{updateTime},
+			</if>
+		</set>
+		where 
+		id=#{id}
+	</update>
+	
+	<!--查询-->
+	<select id="selectDataDictionaryById" resultMap="DataDictionaryMap" parameterType="java.lang.Long">
+		select *
+		from sys_data_dictionary 
+		where
+		id=#{id}
+	</select>
+	
+	<!--根据条件查询列表-->
+	<select id="selectDataDictionaryListByMap" resultMap="DataDictionaryMap" parameterType="java.util.Map">
+		select *
+		from sys_data_dictionary 
+		where 1=1
+			<if test="dataDictionary != null">
+				<if test="dataDictionary.id != null and dataDictionary.id != ''">
+					and id=#{dataDictionary.id}
+				</if>
+			</if>
+			<if test="dataDictionary != null">
+				<if test="dataDictionary.codeType != null and dataDictionary.codeType != ''">
+					and code_type=#{dataDictionary.codeType}
+				</if>
+			</if>
+			<if test="dataDictionary != null">
+				<if test="dataDictionary.codeKey != null and dataDictionary.codeKey != ''">
+					and code_key=#{dataDictionary.codeKey}
+				</if>
+			</if>
+			<if test="dataDictionary != null">
+				<if test="dataDictionary.codeValue != null and dataDictionary.codeValue != ''">
+					and code_value=#{dataDictionary.codeValue}
+				</if>
+			</if>
+			<if test="dataDictionary != null">
+				<if test="dataDictionary.codeDescribe != null and dataDictionary.codeDescribe != ''">
+					and code_describe=#{dataDictionary.codeDescribe}
+				</if>
+			</if>
+			<if test="dataDictionary != null">
+				<if test="dataDictionary.isEnable != null and dataDictionary.isEnable != ''">
+					and is_enable=#{dataDictionary.isEnable}
+				</if>
+			</if>
+			<if test="dataDictionary != null">
+				<if test="dataDictionary.updateTime != null and dataDictionary.updateTime != ''">
+					and update_time=#{dataDictionary.updateTime}
+				</if>
+			</if>
+	</select>
+	
+	<!-- 删除 -->
+	<delete id="deleteDataDictionaryById" parameterType="java.lang.Long">
+		delete from sys_data_dictionary  where 
+		id=#{id}
+	</delete>
+	
+</mapper>

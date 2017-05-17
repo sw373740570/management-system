@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vcredit.lrhWechatAttention.dao.LrhWechatAttentionDao">
+	<resultMap id="LrhWechatAttentionMap" type="com.vcredit.lrhWechatAttention.entity.LrhWechatAttention">
+		
+		<id column="attention_id" property="attentionId"/>
+		<result column="wechat_no" property="wechatNo"/>
+		<result column="wechat_nickname" property="wechatNickname"/>
+		<result column="vbs_sale_sale_agent_id" property="vbsSaleSaleAgentId"/>
+		<result column="vbs_sale_team_name" property="vbsSaleTeamName"/>
+		<result column="vbs_sale_team_full_key" property="vbsSaleTeamFullKey"/>
+		<result column="vbs_sale_store_key" property="vbsSaleStoreKey"/>
+		<result column="vbs_sale_store_name" property="vbsSaleStoreName"/>
+		<result column="vbs_sale_city_name" property="vbsSaleCityName"/>
+		<result column="vbs_sale_region_key" property="vbsSaleRegionKey"/>
+		<result column="open_id" property="openId"/>
+		<result column="attention_time" property="attentionTime"/>
+		<result column="create_time" property="createTime"/>
+		<result column="modify_time" property="modifyTime"/>
+		<result column="vbs_sale_agent_name" property="vbsSaleAgentName"/>
+		<result column="vbs_city_code" property="vbsCityCode"/>
+		<result column="vbs_sales_department_name" property="vbsSalesDepartmentName"/>
+		<result column="vbs_sales_department_key" property="vbsSalesDepartmentKey"/>
+		<result column="vbs_division_name" property="vbsDivisionName"/>
+		<result column="vbs_division_key" property="vbsDivisionKey"/>
+		<result column="sale_number" property="saleNo"/>
+	</resultMap>
+
+	<!--保存 -->
+	<insert id="saveLrhWechatAttention" parameterType="com.vcredit.lrhWechatAttention.entity.LrhWechatAttention" 	useGeneratedKeys="true" 
+		keyProperty="attentionId"
+																																								 >
+		insert into lrh_wechat_attention 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="attentionId != null">
+				attention_id,
+			</if>
+			<if test="wechatNo != null">
+				wechat_no,
+			</if>
+			<if test="wechatNickname != null">
+				wechat_nickname,
+			</if>
+			<if test="vbsSaleSaleAgentId != null">
+				vbs_sale_sale_agent_id,
+			</if>
+			<if test="vbsSaleTeamName != null">
+				vbs_sale_team_name,
+			</if>
+			<if test="vbsSaleTeamFullKey != null">
+				vbs_sale_team_full_key,
+			</if>
+			<if test="vbsSaleStoreKey != null">
+				vbs_sale_store_key,
+			</if>
+			<if test="vbsSaleStoreName != null">
+				vbs_sale_store_name,
+			</if>
+			<if test="vbsSaleCityName != null">
+				vbs_sale_city_name,
+			</if>
+			<if test="vbsSaleRegionKey != null">
+				vbs_sale_region_key,
+			</if>
+			<if test="openId != null">
+				open_id,
+			</if>
+			<if test="attentionTime != null">
+				attention_time,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="vbsSaleAgentName != null">
+				vbs_sale_agent_name,
+			</if>
+			<if test="vbsCityCode != null">
+				vbs_city_code,
+			</if>
+			<if test="vbsSalesDepartmentName != null">
+				vbs_sales_department_name,
+			</if>
+			<if test="vbsSalesDepartmentKey != null">
+				vbs_sales_department_key,
+			</if>
+			<if test="vbsDivisionName != null">
+				vbs_division_name,
+			</if>
+			<if test="vbsDivisionKey != null">
+				vbs_division_key,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="attentionId != null">
+				#{attentionId},
+			</if>
+			<if test="wechatNo != null">
+				#{wechatNo},
+			</if>
+			<if test="wechatNickname != null">
+				#{wechatNickname},
+			</if>
+			<if test="vbsSaleSaleAgentId != null">
+				#{vbsSaleSaleAgentId},
+			</if>
+			<if test="vbsSaleTeamName != null">
+				#{vbsSaleTeamName},
+			</if>
+			<if test="vbsSaleTeamFullKey != null">
+				#{vbsSaleTeamFullKey},
+			</if>
+			<if test="vbsSaleStoreKey != null">
+				#{vbsSaleStoreKey},
+			</if>
+			<if test="vbsSaleStoreName != null">
+				#{vbsSaleStoreName},
+			</if>
+			<if test="vbsSaleCityName != null">
+				#{vbsSaleCityName},
+			</if>
+			<if test="vbsSaleRegionKey != null">
+				#{vbsSaleRegionKey},
+			</if>
+			<if test="openId != null">
+				#{openId},
+			</if>
+			<if test="attentionTime != null">
+				#{attentionTime},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime},
+			</if>
+			<if test="vbsSaleAgentName != null">
+				#{vbsSaleAgentName},
+			</if>
+			<if test="vbsCityCode != null">
+				#{vbsCityCode},
+			</if>
+			<if test="vbsSalesDepartmentName != null">
+				#{vbsSalesDepartmentName},
+			</if>
+			<if test="vbsSalesDepartmentKey != null">
+				#{vbsSalesDepartmentKey},
+			</if>
+			<if test="vbsDivisionName != null">
+				#{vbsDivisionName},
+			</if>
+			<if test="vbsDivisionKey != null">
+				#{vbsDivisionKey},
+			</if>
+		</trim>
+	</insert>
+	
+	<!--修改-->
+	<update id="updateLrhWechatAttentionById" parameterType="com.vcredit.lrhWechatAttention.entity.LrhWechatAttention">
+		update lrh_wechat_attention 
+		<set>
+			<if test="attentionId != null">
+				attention_id=#{attentionId},
+			</if>
+			<if test="wechatNo != null">
+				wechat_no=#{wechatNo},
+			</if>
+			<if test="wechatNickname != null">
+				wechat_nickname=#{wechatNickname},
+			</if>
+			<if test="vbsSaleSaleAgentId != null">
+				vbs_sale_sale_agent_id=#{vbsSaleSaleAgentId},
+			</if>
+			<if test="vbsSaleTeamName != null">
+				vbs_sale_team_name=#{vbsSaleTeamName},
+			</if>
+			<if test="vbsSaleTeamFullKey != null">
+				vbs_sale_team_full_key=#{vbsSaleTeamFullKey},
+			</if>
+			<if test="vbsSaleStoreKey != null">
+				vbs_sale_store_key=#{vbsSaleStoreKey},
+			</if>
+			<if test="vbsSaleStoreName != null">
+				vbs_sale_store_name=#{vbsSaleStoreName},
+			</if>
+			<if test="vbsSaleCityName != null">
+				vbs_sale_city_name=#{vbsSaleCityName},
+			</if>
+			<if test="vbsSaleRegionKey != null">
+				vbs_sale_region_key=#{vbsSaleRegionKey},
+			</if>
+			<if test="openId != null">
+				open_id=#{openId},
+			</if>
+			<if test="attentionTime != null">
+				attention_time=#{attentionTime},
+			</if>
+			<if test="createTime != null">
+				create_time=#{createTime},
+			</if>
+			<if test="modifyTime != null">
+				modify_time=#{modifyTime},
+			</if>
+			<if test="vbsSaleAgentName != null">
+				vbs_sale_agent_name=#{vbsSaleAgentName},
+			</if>
+			<if test="vbsCityCode != null">
+				vbs_city_code=#{vbsCityCode},
+			</if>
+			<if test="vbsSalesDepartmentName != null">
+				vbs_sales_department_name=#{vbsSalesDepartmentName},
+			</if>
+			<if test="vbsSalesDepartmentKey != null">
+				vbs_sales_department_key=#{vbsSalesDepartmentKey},
+			</if>
+			<if test="vbsDivisionName != null">
+				vbs_division_name=#{vbsDivisionName},
+			</if>
+			<if test="vbsDivisionKey != null">
+				vbs_division_key=#{vbsDivisionKey},
+			</if>
+		</set>
+		where 
+		attention_id=#{attentionId}
+	</update>
+	
+	<!--查询-->
+	<select id="selectLrhWechatAttentionById" resultMap="LrhWechatAttentionMap" parameterType="java.lang.Long">
+		select *
+		from lrh_wechat_attention 
+		where
+		attention_id=#{attentionId}
+	</select>
+	
+	<!--根据条件查询列表-->
+	<select id="selectLrhWechatAttentionListByMap" resultMap="LrhWechatAttentionMap" parameterType="java.util.Map">
+		select lrh_wechat_attention.*,o2o_sale.sale_number
+		from lrh_wechat_attention
+		left join o2o_sale on lrh_wechat_attention.vbs_sale_sale_agent_id = o2o_sale.employee_id
+		where 1=1
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.attentionId != null and lrhWechatAttention.attentionId != ''">
+					and attention_id=#{lrhWechatAttention.attentionId}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.wechatNo != null and lrhWechatAttention.wechatNo != ''">
+					and wechat_no=#{lrhWechatAttention.wechatNo}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.wechatNickname != null and lrhWechatAttention.wechatNickname != ''">
+					and wechat_nickname LIKE CONCAT('%',#{lrhWechatAttention.wechatNickname},'%')
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSaleSaleAgentId != null and lrhWechatAttention.vbsSaleSaleAgentId != ''">
+					and o2o_sale.sale_number=#{lrhWechatAttention.vbsSaleSaleAgentId}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSaleTeamName != null and lrhWechatAttention.vbsSaleTeamName != ''">
+					and vbs_sale_team_name=#{lrhWechatAttention.vbsSaleTeamName}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSaleTeamFullKey != null and lrhWechatAttention.vbsSaleTeamFullKey != ''">
+					and vbs_sale_team_full_key=#{lrhWechatAttention.vbsSaleTeamFullKey}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSaleStoreKey != null and lrhWechatAttention.vbsSaleStoreKey != ''">
+					and vbs_sale_store_key=#{lrhWechatAttention.vbsSaleStoreKey}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSaleStoreName != null and lrhWechatAttention.vbsSaleStoreName != ''">
+					and vbs_sale_store_name=#{lrhWechatAttention.vbsSaleStoreName}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSaleCityName != null and lrhWechatAttention.vbsSaleCityName != ''">
+					and vbs_sale_city_name=#{lrhWechatAttention.vbsSaleCityName}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSaleRegionKey != null and lrhWechatAttention.vbsSaleRegionKey != ''">
+					and vbs_sale_region_key=#{lrhWechatAttention.vbsSaleRegionKey}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.openId != null and lrhWechatAttention.openId != ''">
+					and open_id=#{lrhWechatAttention.openId}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.attentionTime != null and lrhWechatAttention.attentionTime != ''">
+					and attention_time=#{lrhWechatAttention.attentionTime}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.createTime != null and lrhWechatAttention.createTime != ''">
+					and create_time=#{lrhWechatAttention.createTime}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.modifyTime != null and lrhWechatAttention.modifyTime != ''">
+					and modify_time=#{lrhWechatAttention.modifyTime}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSaleAgentName != null and lrhWechatAttention.vbsSaleAgentName != ''">
+					and vbs_sale_agent_name=#{lrhWechatAttention.vbsSaleAgentName}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsCityCode != null and lrhWechatAttention.vbsCityCode != ''">
+					and vbs_city_code=#{lrhWechatAttention.vbsCityCode}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSalesDepartmentName != null and lrhWechatAttention.vbsSalesDepartmentName != ''">
+					and vbs_sales_department_name=#{lrhWechatAttention.vbsSalesDepartmentName}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsSalesDepartmentKey != null and lrhWechatAttention.vbsSalesDepartmentKey != ''">
+					and vbs_sales_department_key=#{lrhWechatAttention.vbsSalesDepartmentKey}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsDivisionName != null and lrhWechatAttention.vbsDivisionName != ''">
+					and vbs_division_name=#{lrhWechatAttention.vbsDivisionName}
+				</if>
+			</if>
+			<if test="lrhWechatAttention != null">
+				<if test="lrhWechatAttention.vbsDivisionKey != null and lrhWechatAttention.vbsDivisionKey != ''">
+					and vbs_division_key=#{lrhWechatAttention.vbsDivisionKey}
+				</if>
+			</if>
+	</select>
+	
+	<!-- 删除 -->
+	<delete id="deleteLrhWechatAttentionById" parameterType="java.lang.Long">
+		delete from lrh_wechat_attention  where 
+		attention_id=#{attentionId}
+	</delete>
+
+	<select id="getSaleInfoBySaleNo" parameterType="java.lang.String" resultType="java.lang.String">
+		select o2o_sale.employee_id
+		from o2o_sale
+		where
+		o2o_sale.sale_number=#{saleNo}
+	</select>
+</mapper>

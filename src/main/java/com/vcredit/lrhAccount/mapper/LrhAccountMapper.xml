@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vcredit.lrhAccount.dao.LrhAccountDao">
+	<resultMap id="LrhAccountMap" type="com.vcredit.lrhAccount.entity.LrhAccount">
+		
+		<id column="account_id" property="accountId"/>
+		<result column="login_name" property="loginName"/>
+		<result column="password" property="password"/>
+		<result column="account_type" property="accountType"/>
+		<result column="create_time" property="createTime"/>
+		<result column="update_time" property="updateTime"/>
+		<result column="invite_code" property="inviteCode"/>
+		<result column="is_enabled" property="isEnabled"/>
+		<result column="register_time" property="registerTime"/>
+		<result column="app_channel" property="appChannel"/>
+		<result column="brand" property="brand"/>
+		<result column="device_id" property="deviceId"/>
+		<result column="device_type" property="deviceType"/>
+		<result property="customerName" column="customer_name"/>
+		<result column="sale_number" property="saleNo"/>
+		<result property="customerIdcard" column="customer_idcard"/>
+		<result property="vbsSaleTeamName" column="vbs_sale_team_name"/>
+		<result property="vbsSaleStoreName" column="vbs_sale_store_name"/>
+		<result property="vbsSaleCityName" column="vbs_sale_city_name"/>
+		<result property="vbsSaleAgentName" column="vbs_sale_agent_name"/>
+	</resultMap>
+
+	<!--保存 -->
+	<insert id="saveLrhAccount" parameterType="com.vcredit.lrhAccount.entity.LrhAccount" 	useGeneratedKeys="true" 
+		keyProperty="accountId"
+																										 >
+		insert into lrh_account 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="accountId != null">
+				account_id,
+			</if>
+			<if test="loginName != null">
+				login_name,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="accountType != null">
+				account_type,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="inviteCode != null">
+				invite_code,
+			</if>
+			<if test="isEnabled != null">
+				is_enabled,
+			</if>
+			<if test="registerTime != null">
+				register_time,
+			</if>
+			<if test="appChannel != null">
+				app_channel,
+			</if>
+			<if test="brand != null">
+				brand,
+			</if>
+			<if test="deviceId != null">
+				device_id,
+			</if>
+			<if test="deviceType != null">
+				device_type,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="accountId != null">
+				#{accountId},
+			</if>
+			<if test="loginName != null">
+				#{loginName},
+			</if>
+			<if test="password != null">
+				#{password},
+			</if>
+			<if test="accountType != null">
+				#{accountType},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime},
+			</if>
+			<if test="inviteCode != null">
+				#{inviteCode},
+			</if>
+			<if test="isEnabled != null">
+				#{isEnabled},
+			</if>
+			<if test="registerTime != null">
+				#{registerTime},
+			</if>
+			<if test="appChannel != null">
+				#{appChannel},
+			</if>
+			<if test="brand != null">
+				#{brand},
+			</if>
+			<if test="deviceId != null">
+				#{deviceId},
+			</if>
+			<if test="deviceType != null">
+				#{deviceType},
+			</if>
+		</trim>
+	</insert>
+	
+	<!--修改-->
+	<update id="updateLrhAccountById" parameterType="com.vcredit.lrhAccount.entity.LrhAccount">
+		update lrh_account 
+		<set>
+			<if test="accountId != null">
+				account_id=#{accountId},
+			</if>
+			<if test="loginName != null">
+				login_name=#{loginName},
+			</if>
+			<if test="password != null">
+				password=#{password},
+			</if>
+			<if test="accountType != null">
+				account_type=#{accountType},
+			</if>
+			<if test="createTime != null">
+				create_time=#{createTime},
+			</if>
+			<if test="updateTime != null">
+				update_time=#{updateTime},
+			</if>
+			<if test="inviteCode != null">
+				invite_code=#{inviteCode},
+			</if>
+			<if test="isEnabled != null">
+				is_enabled=#{isEnabled},
+			</if>
+			<if test="registerTime != null">
+				register_time=#{registerTime},
+			</if>
+			<if test="appChannel != null">
+				app_channel=#{appChannel},
+			</if>
+			<if test="brand != null">
+				brand=#{brand},
+			</if>
+			<if test="deviceId != null">
+				device_id=#{deviceId},
+			</if>
+			<if test="deviceType != null">
+				device_type=#{deviceType},
+			</if>
+		</set>
+		where 
+		account_id=#{accountId}
+	</update>
+	
+	<!--查询-->
+	<select id="selectLrhAccountById" resultMap="LrhAccountMap" parameterType="java.lang.String">
+		select lrh_account.*,lrh_customer.customer_name,lrh_customer.customer_idcard
+		from lrh_account
+		left join lrh_customer on lrh_customer.account_id = lrh_account.account_id
+		where
+		lrh_account.account_id=#{accountId}
+	</select>
+	
+	<!--根据条件查询列表-->
+	<select id="selectLrhAccountListByMap" resultMap="LrhAccountMap" parameterType="java.util.Map">
+		select lrh_account.*,lrh_customer.customer_name,lrh_customer.customer_idcard,lrh_customer.vbs_sale_team_name,lrh_customer.vbs_sale_store_name,lrh_customer.vbs_sale_city_name,lrh_customer.vbs_sale_agent_name,o2o_sale.sale_number
+		from lrh_account
+		left join lrh_customer on lrh_customer.account_id = lrh_account.account_id
+		left join o2o_sale on o2o_sale.employee_id = lrh_customer.vbs_sale_sale_agent_id
+		where 1=1
+	<if test="lrhAccount != null">
+		<if test="lrhAccount.customerIdcard != null and lrhAccount.customerIdcard != ''">
+			and lrh_customer.customer_idcard=#{lrhAccount.customerIdcard}
+		</if>
+	</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.accountId != null and lrhAccount.accountId != ''">
+					and account_id=#{lrhAccount.accountId}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.loginName != null and lrhAccount.loginName != ''">
+					and login_name=#{lrhAccount.loginName}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.password != null and lrhAccount.password != ''">
+					and password=#{lrhAccount.password}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.accountType != null and lrhAccount.accountType != ''">
+					and account_type=#{lrhAccount.accountType}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.createTime != null and lrhAccount.createTime != ''">
+					and create_time=#{lrhAccount.createTime}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.updateTime != null and lrhAccount.updateTime != ''">
+					and update_time=#{lrhAccount.updateTime}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.inviteCode != null and lrhAccount.inviteCode != ''">
+					and invite_code=#{lrhAccount.inviteCode}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.isEnabled != null and lrhAccount.isEnabled != ''">
+					and is_enabled=#{lrhAccount.isEnabled}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.registerTime != null and lrhAccount.registerTime != ''">
+					and register_time=#{lrhAccount.registerTime}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.appChannel != null and lrhAccount.appChannel != ''">
+					and app_channel=#{lrhAccount.appChannel}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.brand != null and lrhAccount.brand != ''">
+					and brand=#{lrhAccount.brand}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.deviceId != null and lrhAccount.deviceId != ''">
+					and device_id=#{lrhAccount.deviceId}
+				</if>
+			</if>
+			<if test="lrhAccount != null">
+				<if test="lrhAccount.deviceType != null and lrhAccount.deviceType != ''">
+					and device_type=#{lrhAccount.deviceType}
+				</if>
+			</if>
+	</select>
+	
+	<!-- 删除 -->
+	<delete id="deleteLrhAccountById" parameterType="java.lang.Long">
+		delete from lrh_account  where 
+		account_id=#{accountId}
+	</delete>
+	
+</mapper>
